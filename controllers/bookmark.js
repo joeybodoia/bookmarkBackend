@@ -18,15 +18,17 @@ bookmark.post("/", async (req,res)=>{
     res.json(await Bookmark.create(req.body))
 })
 
+// UPDATE
+bookmark.put("/:id", async (req,res)=>{
+    res.json(await Bookmark.findByIdAndUpdate(req.params.id, req.body, {new:true}))
+})
+
 
 // DELETE
 bookmark.delete("/:id", async (req,res)=>{
     res.json(await Bookmark.findByIdAndRemove(req.params.id))
 })
 
-
-
-// UPDATE
 
 
 module.exports = bookmark
